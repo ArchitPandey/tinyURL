@@ -44,6 +44,7 @@ public class TinyURLDAOImpl implements TinyURLDAO {
 	}
 
 	@Override
+	@Transactional
 	public int deleteTinyURL(int key) {
 		jdbcTemplate.update( (conn) -> {
 			PreparedStatement ps = conn.prepareStatement(UPDATE_KEY_UNUSED);
@@ -71,6 +72,7 @@ public class TinyURLDAOImpl implements TinyURLDAO {
 	}
 
 	@Override
+	@Transactional
 	public int createTinyURL(String longURL, int key) throws NumberFormatException, IOException {
 		jdbcTemplate.update( (conn) -> {
 			PreparedStatement ps = conn.prepareStatement(UPDATE_KEY_USED);

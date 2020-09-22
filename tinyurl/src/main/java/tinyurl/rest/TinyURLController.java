@@ -25,9 +25,10 @@ public class TinyURLController {
 	}
 	
 	@PostMapping("/tinyurl")
-	public int createTinyURL(@RequestBody String longURL) {
+	public String createTinyURL(@RequestBody String longURL) {
 		
-		return tinyURLService.createTinyURL(longURL);
+		int key = tinyURLService.createTinyURL(longURL);
+		return Integer.toString(key);
 	}
 	
 	@DeleteMapping("/tinyurl/{tinyURL}") 
