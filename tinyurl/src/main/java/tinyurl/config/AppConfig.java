@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class AppConfig {
 	
 	@Bean
-	public DataSource tinyURLDataSource(@Value("${db.driverclass}") String driverclass, @Value("${db.url}") String url, @Value("${db.user") String user, @Value("${db.password}") String password) {
+	public DataSource tinyURLDataSource(@Value("${db.driverclass}") String driverclass, @Value("${db.url}") String url, @Value("${db.user}") String user, @Value("${db.password}") String password) {
 		DriverManagerDataSource dsbean = new DriverManagerDataSource();
 		dsbean.setDriverClassName(driverclass);
 		dsbean.setUrl(url);

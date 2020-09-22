@@ -12,19 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import tinyurl.commons.AppConstants;
 import tinyurl.commons.AppProperties;
 
+@Repository
 public class TinyURLDAOImpl implements TinyURLDAO {
 
 	private final String LOAD_UNUSED_KEYS = "call fetchKeys(?)";
 	private final String FETCH_UNUSED_KEYS = "select seq from tmp_unused_keys";
 	private final String DELETE_KEY = "delete from tu_url_map where key_value=? LIMIT 1";
 	private final String FETCH_LONG_URL = "call fetchLongURL(?,?)";
-	private final String UPDATE_KEY_USED = "update tu_keys set used_flag = Y where key_value = ?";
-	private final String UPDATE_KEY_UNUSED = "update tu_keys set used_flag = N where key_value = ?";
+	private final String UPDATE_KEY_USED = "update tu_keys set used_flag = 'Y' where key_value = ?";
+	private final String UPDATE_KEY_UNUSED = "update tu_keys set used_flag = 'N' where key_value = ?";
 	private final String CREATE_LONG_URL = "insert into tu_url_map values (?, ?, ?, ?)";
 	
 	@Autowired
