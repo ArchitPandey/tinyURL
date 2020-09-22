@@ -32,9 +32,10 @@ public class TinyURLController {
 	}
 	
 	@DeleteMapping("/tinyurl/{tinyURL}") 
-	public int deleteTinyURL(@PathVariable("tinyURL") int key){
+	public String deleteTinyURL(@PathVariable("tinyURL") int key){
 		
-		return tinyURLService.deleteTinyURL(key);
+		int rowsAffected =  tinyURLService.deleteTinyURL(key);
+		return Integer.toString(rowsAffected);
 	}
 	
 }

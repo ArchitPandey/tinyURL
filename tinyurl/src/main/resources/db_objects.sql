@@ -175,11 +175,17 @@ BEGIN
     select long_url, expiration_dt from tu_url_map where key_value = tu_key LIMIT 1
     into longURL, exp_dt;
     
-    if exp_dt >= NOW() then
+    if exp_dt < NOW() then
 		SET longURL = "Expired";
         delete from tu_url_map where key_value = tu_key LIMIT 1;
+        update tu_keys set used_flag = 'N' where key_value = tu_key;
         commit;
     end if;
+    
+    if longURL is null then
+		set longURL = "Not Found";
+	end if;
+    
 END; //
 
 DELIMITER ;
