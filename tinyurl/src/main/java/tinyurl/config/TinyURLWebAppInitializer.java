@@ -25,8 +25,8 @@ public class TinyURLWebAppInitializer implements WebApplicationInitializer {
 		
 		DispatcherServlet dispatcherServlet = new DispatcherServlet(dispatcherContext);
 		
-		ServletRegistration.Dynamic dynamic = servletContext.addServlet("dispatcher", dispatcherServlet);
-		dynamic.addMapping("/");
+		ServletRegistration.Dynamic dispatcherServletResigration = servletContext.addServlet("dispatcher", dispatcherServlet);
+		dispatcherServletResigration.addMapping("/tinyurl/*");
 		
 	}
 

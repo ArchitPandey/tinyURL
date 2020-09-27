@@ -1,6 +1,7 @@
 package tinyurl.service;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,7 +25,13 @@ public class TinyURLServiceImpl implements TinyURLService {
 	@Override
 	public String getLongURL(int key) {
 		
-		return tinyURLDAO.getLongURL(key);
+		String longURL = tinyURLDAO.getLongURL(key);
+		
+		if(Objects.isNull(longURL) || longURL.isEmpty() || longURL.equals("Expired")) {
+			throw new TinyURLException(ExceptionCodes.TINYURL_EXPIRED);
+		}
+		
+		return longURL;
 	}
 
 	@Override

@@ -46,7 +46,15 @@
     	<artifactId>spring-webmvc</artifactId>
     	<version>5.2.3.RELEASE</version>
 	</dependency>
-	
+	 
+	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+	<!-- 
+	<dependency>
+	    <groupId>org.apache.tomcat</groupId>
+	    <artifactId>tomcat-catalina</artifactId>
+	    <version>9.0.38</version>
+	</dependency>
+	-->
 	
   </dependencies>
   
@@ -78,7 +86,7 @@
 			<version>2.2</version>
 			<configuration>
 				<port>7070</port>
-				<path>/api/main</path>
+				<path>/</path>
 			</configuration>
 		</plugin>
   		
